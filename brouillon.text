@@ -1,0 +1,39 @@
+  goToPage(page: number): void {
+    if (page >= 1) {
+      this.currentPage = page;
+      this.loadCategories();
+    } else {
+      alert("La page demandée n'existe pas.");
+    }
+  }
+
+
+  // isButtonEnabled(): boolean {
+    //   if (!this.editingMode) {
+    //     return this.newCategoryLibelle.length >= 3 && this.checkExistingLibelle();
+    //   } else if (this.selectedCategory) {
+    //     return (
+    //       this.newCategoryLibelle.length >= 3 &&
+    //       this.newCategoryLibelle !== this.selectedCategory.libeller &&
+    //       this.checkExistingLibelle()
+    //     );
+    //   }
+    //   return false;
+    // }
+  
+    // checkExistingLibelle(): boolean {
+    //   const libelleExists = this.categories.some(
+    //     (category) =>
+    //       category.libeller.toLowerCase() ===
+    //       this.newCategoryLibelle.toLowerCase()
+    //   );
+  
+    //   if (libelleExists) {
+    //     this.error = 'Ce libellé existe déjà.';
+    //     return false;
+    //   } else {
+    //     this.error = '';
+    //     return true;
+    //   }
+    // }
+  

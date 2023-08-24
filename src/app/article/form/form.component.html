@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Article Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="container mt-4 " style="font-size:15px;">
+      <form shadow [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+        <div class="jumbotron text-center">
+          <div class="d-flex justify-content-center">
+            <label for="photo" class="file-label">
+              <img src="https://i.stack.imgur.com/E9JeX.png" alt="Uploader"
+                class="file-icon" />
+            </label>
+            <input id="photo" type="file" name="photo"
+              (change)="onFileSelected($event)"
+              class="form-control-file file-input" style="display: none;" />
+          </div>
+        </div>
+        <div class="alert" [ngClass]="'alert-' + alertType" *ngIf="showAlert">
+          {{ alertMessage }}
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="libeller">LIBELLE</label>
+              <input id="libeller" type="text" formControlName="libeller"
+                class="form-control" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prix">PRIX</label>
+              <input id="prix" type="number" formControlName="prix"
+                class="form-control" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="categorie">CATEGORIE</label>
+              <select id="categorie" formControlName="categorie"
+                class="form-control">
+                <option *ngFor="let libeller of libellers" [value]="libeller">{{
+                  libeller }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="stock">STOCK</label>
+              <input id="stock" type="number" formControlName="stock"
+                class="form-control" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="fournisseur">FOURNISSEUR</label>
+              <input id="fournisseur" type="text" formControlName="fournisseur"
+                class="form-control"
+                (input)="onFournisseurInput()" />
+            </div>
+            <div class="suggestion">
+              <!-- <h5>Suggestion:</h5> -->
+              <ul>
+                <li *ngFor="let suggestion of suggestions"
+                  (click)="selectSuggestion(suggestion)">{{ suggestion }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="Reference">REFERENCE</label>
+              <input id="Reference" type="text" formControlName="Reference"
+                class="form-control" readonly />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </body>
+</html>

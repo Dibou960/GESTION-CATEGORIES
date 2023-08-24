@@ -1,0 +1,45 @@
+<div class="container mx-auto mt-8 p-4 shadow " style="border-radius: 20px;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">ARTICLE</th>
+        <th scope="col">PRIX</th>
+        <th scope="col">STOCK</th>
+        <th scope="col">CATEGORIE</th>
+        <th scope="col">FOURNISSEUR</th>
+        <th scope="col">REFERANCE</th>
+        <th scope="col">ACTIIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles">
+        <td>
+          
+        </td>
+        <td>{{ article.libeller }}</td>
+        <td>{{ article.prix }}</td>
+        <td>{{ article.stock }}</td>
+        <td>{{ article.categorie_libeller }}</td>
+        <td>{{ article.fournisseur_nom }}</td>
+        <td>{{ article.reference }}</td>
+        <td>
+          <button class="btn btn-primary mr-2" (click)="updateArticle(article)">Éditer</button>
+
+          <button class="btn btn-danger" (click)="deleteArticle(article)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <app-pagination 
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (previousPageClicked)="goToPreviousPage()"
+    (nextPageClicked)="goToNextPage()">
+  </app-pagination>
+</div>
+
+<!-- 
+    <app-form [editMode]="editMode" [currentArticle]="editingArticle"></app-form> -->
+
